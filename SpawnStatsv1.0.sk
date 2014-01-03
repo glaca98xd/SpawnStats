@@ -9,7 +9,6 @@
 #║			  For Spawn				║
 #╚══════════════════════════════════╝
 #SkriptPlus is required. http://tinyurl.com/mumctp8
-
 #┏╌╌╌╌╌╌╌╌╌╌╌╌╌SETTINGS╌╌╌╌╌╌╌╌╌╌╌╌╌┓
 options:
 	SpawnWorld: spawn
