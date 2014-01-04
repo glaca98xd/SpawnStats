@@ -1,0 +1,38 @@
+#/-------------------------------------------------------\
+#|▒█▀▀▀█ █▀▀█ █▀▀█ █░░░█ █▀▀▄ ▒█▀▀▀█ ▀▀█▀▀ █▀▀█ ▀▀█▀▀ █▀▀|
+#|░▀▀▀▄▄ █░░█ █▄▄█ █▄█▄█ █░░█ ░▀▀▀▄▄ ░░█░░ █▄▄█ ░░█░░ ▀▀█|
+#|▒█▄▄▄█ █▀▀▀ ▀░░▀ ░▀░▀░ ▀░░▀ ▒█▄▄▄█ ░░▀░░ ▀░░▀ ░░▀░░ ▀▀▀|
+#\-------------------------------------------------------/
+
+#╔══════════════════════════════════╗
+#║			Simple Stats			║
+#║			  For Spawn				║
+#╚══════════════════════════════════╝
+#SkriptPlus is required. http://tinyurl.com/mumctp8
+#┏╌╌╌╌╌╌╌╌╌╌╌╌╌SETTINGS╌╌╌╌╌╌╌╌╌╌╌╌╌┓
+options:
+	SpawnWorld: spawn
+#		THIS SCOREBOARD WILL SHOW UP IN THIS WORLD ONLY!!!!!!!!
+#		ALSO MAKE SURE JUST SPAWN IS IN THIS WORLD!!
+    UpdateTick: 200
+#       The interval of time that it waits till it updates the scoreboard.
+#       Default is 200 as suggested by the Bukkit Dev community
+    Version: 1.2
+#┗╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┚
+#
+#┏╌╌╌╌╌╌╌╌╌╌╌╌╌╌UPDATER╌╌╌╌╌╌╌╌╌╌╌╌╌┓
+every 3 hours:
+    set {_latestversion} to text from url "https://raw.github.com/iLeoable/SpawnStats/master/latest.txt"
+    if {@Version} is not {_latestversion}:
+        broadcast "&4&l&nSpawnStats &a> &6I am currently out of date. Please update me at &fhttps://github.com/iLeoable/SpawnStats"
+#┗╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┚
+every {@UpdateTick} ticks:
+	loop all players in world "{@SpawnWorld}":
+		display board named "&c&l&nSTATS" to loop-player
+		make score "&6-==========- " in board of loop-player to 0
+#Items in board start here.
+		make score "&aKills" in board of loop-player to {kill counter.%loop-player%.kills_total}
+		make score "&aUnique Players" in board of loop-player to {firstcount}
+		make score "&aCoins" in board of loop-player to {ec.%loop-player%.balance}
+#Items in board end here.
+		move display of loop-player to "sidebar"
