@@ -5,8 +5,8 @@
 #\-------------------------------------------------------/
 
 #╔══════════════════════════════════╗
-#║			Simple Stats			║
-#║			  For Spawn				║
+#║                       Simple Stats                       ║
+#║                        For Spawn                         ║
 #╚══════════════════════════════════╝
 #SkriptPlus is required. http://tinyurl.com/mumctp8
 #┏╌╌╌╌╌╌╌╌╌╌╌╌╌SETTINGS╌╌╌╌╌╌╌╌╌╌╌╌╌┓
@@ -22,10 +22,10 @@ options:
 #
 #┏╌╌╌╌╌╌╌╌╌╌╌╌╌╌UPDATER╌╌╌╌╌╌╌╌╌╌╌╌╌┓
 every 2 hours:
-	set {spawnstats.lv} to text from url "https://raw.github.com/iLeoable/SpawnStats/master/latest.txt"
+	set {spawnstats.lv} to text from url "https://raw.github.com/iLeoable/SpawnStats/master/latest.xml"
 	wait 10 ticks
 	if {@Version} is not {spawnstats.lv}:
-		broadcast "&4&l&nSpawnStats &a> &6I am currently out of date. Please update me at &fhttps://github.com/iLeoable/SpawnStats"
+		send "&4&l&nSpawnStats &a> &6I am currently out of date. Please update me at &fhttps://github.com/iLeoable/SpawnStats" to console
 #┗╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┚
 every {@UpdateTick} ticks:
 	loop all players in world "{@SpawnWorld}":
